@@ -27,6 +27,8 @@ import android.widget.TextView;
 import com.example.android.sunshine.utilities.SunshineDateUtils;
 import com.example.android.sunshine.utilities.SunshineWeatherUtils;
 
+import static com.example.android.sunshine.DetailActivity.INDEX_DATE;
+
 /**
  * {@link ForecastAdapter} exposes a list of weather forecasts
  * from a {@link android.database.Cursor} to a {@link android.support.v7.widget.RecyclerView}.
@@ -49,7 +51,7 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
      */
     public interface ForecastAdapterOnClickHandler {
 //      TODO (36) Refactor onClick to accept a long as its parameter rather than a String
-        void onClick(String weatherForDay);
+        void onClick(long date);
     }
 
     private Cursor mCursor;
@@ -178,8 +180,9 @@ class ForecastAdapter extends RecyclerView.Adapter<ForecastAdapter.ForecastAdapt
         @Override
         public void onClick(View v) {
 //          TODO (37) Instead of passing the String for the clicked item, pass the date from the cursor
-            String weatherForDay = weatherSummary.getText().toString();
-            mClickHandler.onClick(weatherForDay);
+            int clickedView = getAdapterPosition();
+            mCursor.moveToPosition(clickedView);
+            mClickHandler.onClick(mCursor.getLong(INDEX_DATE));
         }
     }
 }
