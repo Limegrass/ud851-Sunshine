@@ -218,6 +218,12 @@
     <string name="condition_unknown">Unknown (<xliff:g id="conditionId">%1$d</xliff:g>)</string>
 
 
+    <!-- For formatting views -->
+    <string name="date_tool">Today, March 21</string>
+    <string name="high_tool">19C</string>
+    <string name="low_tool">13C</string>
+
+
 
     <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
       - Used for Accessibility purposes (Accessibility == a11y)                            -
